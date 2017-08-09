@@ -1,0 +1,34 @@
+{# app/Resources/views/lucky/number.html.twig #}
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}{% endblock %}
+
+{% block body %}
+ 
+
+<div class="container">
+   
+  <h1 class="text-center">Уменьшить длину URL</h1>
+
+          <div class="row show-grid">
+            <div class="col-sm-12 col-md-12 col-lg-12">
+     
+                <div class="alert alert-info">    
+                        Ваш короткий URL сохранен в базе =)
+                </div>
+			</div>
+		</div>
+                 {% if shortcut is defined %}
+                     <div class="alert ">
+                          Ваш URL: <a href="{{ url('homepage') }}{{ shortcut }}">{{ url('homepage') }}{{ shortcut }}</a> 
+                      </div>
+                  {% endif %} 
+                  <a href="{{ url('homepage') }}">Вернуться</a> 
+</div>
+
+
+	
+
+
+
+{% endblock %}

@@ -1,0 +1,42 @@
+{# app/Resources/views/lucky/number.html.twig #}
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}{% endblock %}
+
+{% block body %}
+ 
+
+<div class="container">
+   
+  <h1 class="text-center">Уменьшить длину URL</h1>
+
+          <div class="row show-grid">
+            <div class="col-sm-12 col-md-12 col-lg-12">
+     
+                <div class="alert alert-info">
+                    Введи url и получи короткий аналог!
+                </div>
+                {% if form is defined %}
+                	{% spaceless %}
+                    {{ form_start(form)}}
+					{{ form_errors(form) }}
+					{{ form_widget(form) }}
+					{{ form_end(form) }}
+					{% endspaceless %}
+                 {% endif %} 
+			</div>
+		</div>
+              
+		{% if shortcut is defined %}
+               <div class="alert ">
+                    Ваш код: <a href="http://127.0.0.1:8000/{{ shortcut }}">http://127.0.0.1:8000/{{ shortcut }}</a> 
+                </div>
+		{% endif %}
+</div>
+
+
+	
+
+
+
+{% endblock %}
