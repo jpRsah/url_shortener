@@ -36,7 +36,7 @@ class LuckyController extends Controller
                 )
             )
             ->add('shortcut', TextType::class, array(
-              'label' => 'Ваша ссылка ' .$request->getScheme(). '://' . $request->getHttpHost(). '/',
+              'label' => 'Выберите сокращение' /*.$request->getScheme(). '://' . $request->getHttpHost(). '/'*/,
               'data' => $shortcut, 
               'attr' => array(
                     'placeholder' => 'введите url',
