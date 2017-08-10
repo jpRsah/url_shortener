@@ -15,7 +15,7 @@ class BrokenlinkValidator extends ConstraintValidator
 
         // Создаем дескриптор curl к несуществующему адресу
         $ch = curl_init($value);
-        curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 10);
+        curl_setopt($ch, CURLOPT_TIMEOUT, 10);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_exec($ch);
 

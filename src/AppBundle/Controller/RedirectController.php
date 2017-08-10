@@ -2,22 +2,12 @@
 
 namespace AppBundle\Controller;
 
-/*use AppBundle\Entity\Url;
-use AppBundle\Entity\Urlcontact;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpFoundation\Request;
-
-use Symfony\Component\Form\Extension\Core\Type\UrlType;
-
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Symfony\Component\HttpFoundation\Response;
-*/
 use AppBundle\Entity\Urlcontact;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class RedirectController extends Controller
 {
@@ -29,7 +19,7 @@ class RedirectController extends Controller
         
 
      $shortcut = $request->attributes->get('shortcut');
- 
+      $em = $this->getDoctrine()->getManager();
      $code = $this->getDoctrine()
             ->getRepository(Urlcontact::class)
             ->findByShortcut($shortcut);
@@ -42,14 +32,16 @@ class RedirectController extends Controller
     $repository = $this->getDoctrine()->getRepository(Urlcontact::class);
 
 
-    $products = $repository->findByShortcut($shortcut);
+    $arr_list = $repository->findByShortcut($shortcut);
+    $cnt = $arr_list[0]->getCount();
+    $arr_list[0]->setCount($cnt+1);
+    $em->flush();
+    //print_r($arr_list[0]->setCount($cnt++));
 
-    //print_r($products[0]->getUrl());
-
-    return $this->redirect($products[0]->getUrl());
-
-      /*  return new Response(
-            '<html><body> !!! : '.$products[0]->getUrl().'</body></html>'
+    return $this->redirect($arr_list[0]->getUrl());
+/*
+        return new Response(
+            '<html><body> !!! : '.$arr_list[0]->getCount().'</body></html>'
         );
     */
     }

@@ -76,10 +76,10 @@ class LuckyController extends Controller
              $url = $form->getData();
    
              $urlcontact = new Urlcontact();
-
              $urlcontact->setUrl($form->get('url')->getData());
              $urlcontact->setShortcut($form->get('shortcut')->getData());
              $urlcontact->setDatetime();
+             $urlcontact->setCount("0");
 
             $em->persist($urlcontact);
 

@@ -32,20 +32,7 @@ class Url
      * @AcmeAssert\HasInBD
      */
     protected $shortcut;
-
-    public function testShortcut()
-    {
-        
-        $em = $this->getDoctrine()->getManager();
-        $urlcontact = new Urlcontact();
-
-               if (!$urlcontact->$this->shortcut) {  
-
-                    return false;
-                }
-
-        return true;
-    }    
+   
 
     public function getShortcut()
     {

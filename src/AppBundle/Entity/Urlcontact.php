@@ -63,5 +63,21 @@ class Urlcontact
         {
             return $this->datetime;
         }
+    /**
+     * @ORM\Column(type="integer")
+     * 
+     */
+    private $count;
+
+
+       public function getCount()
+        {
+            return $this->count;
+        }
+
+        public function setCount($count)
+        {
+            $this->count = $count;
+        }        
 }
 
