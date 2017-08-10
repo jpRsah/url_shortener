@@ -6,6 +6,9 @@ use AppBundle\Validator\Constraints as AcmeAssert;
 
 class Url
 {
+    /**
+     * @AcmeAssert\Brokenlink
+     */
     protected $url;
     
 

@@ -20,8 +20,18 @@ class LuckyController extends Controller
      */
  public function newAction(Request $request)
     {
-        // create a task and give it some dummy data for this example
         
+      $date = new \DateTime();
+      $date->modify('-15 days');
+      $em = $this->getDoctrine()->getManager();
+      $query = $em->createQuery('SELECT u FROM AppBundle:Urlcontact u WHERE u.datetime <= :date')->setParameter('date', $date); 
+      $line = $query->getResult();
+      
+      foreach ($line as $key) {
+        $em->remove($key);
+      }
+      $em->flush();
+
         
         $shortcut = bin2hex(random_bytes(5));
         $url = new Url();
