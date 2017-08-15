@@ -2,40 +2,33 @@ url_shortener
 =============
 
 A Symfony project created on July 29, 2017, 9:55 am.
+
 Kalinichenko Roman, jp.rsah@gmail.com.
 
 Description
 =============
 
-В серверной части приложения спользовался Symfony 3.3/PHP 7.0.18/mysql.
 Symfony 3.3/PHP 7.0.18/mysql was used in the server side of this application.
-
-на главной странице есть форма с двумя поля ввода: 
->1. поле для основного Url  
->2. поле для сокращения (автоматическое или собственное)
 
 Is created form with two input fields at the main page:
 
->1. Field for your url 
->2. Field for shortcode (your or generated)
+1. Field for your url 
+2. Field for shortcode (your or generated)
 
-
-Валидность данных проверяется на 3х уровнях:
->1. проверка url с помощью html
->2. проверка url на валидность (curl) и сокращения на уникальность на стороне сервера. [Broken link Validator](src/AppBundle/Validator/Constraints/BrokenlinkValidator.php), [Has In BD Validator](src/AppBundle/Validator/Constraints/HasInBDValidator.php)
->3. проверка сокращения на уникальность на стороне базы данных
 
 Verification of data in 3 layers:
 
->1. Verification of url with html.
->2. Verification of real Url with `curl` and uniqueness short code in the server side. [Broken link Validator](src/AppBundle/Validator/Constraints/BrokenlinkValidator.php), [Has In BD Validator](src/AppBundle/Validator/Constraints/HasInBDValidator.php)
->3. Uniqueness shortcode in the data base.
+1. Verification of url with html.
+2. Verification of real Url with `curl` and uniqueness short code in the server side. [Broken link Validator](src/AppBundle/Validator/Constraints/BrokenlinkValidator.php), [Has In BD Validator](src/AppBundle/Validator/Constraints/HasInBDValidator.php)
+3. Uniqueness shortcode in the data base.
 
 ## To use API
 
-``
+```
+
 $shorturl=file_get_contents('http://DOMAIN/get/'.urlencode('URL'));
-``
+
+```
 DOMAIN - Http host of the url shortener.
 URL - your url for create short url.
 
