@@ -30,8 +30,8 @@ class GetController extends Controller
     
     public function showAction(Request $request, $url)
     {
-        $dfd = urlencode("https://www.rgs.ru/products/private_person/auto/osago/calc/index.wbp");
-        $url = urldecode($dfd);
+        //$dfd = urlencode("https://www.rgs.ru/products/private_person/auto/osago/calc/index.wbp");
+        $url = urldecode($url);
 
         $ch = curl_init($url);
         curl_setopt($ch, CURLOPT_TIMEOUT, 10);
@@ -46,7 +46,7 @@ class GetController extends Controller
 
 
         $em = $this->getDoctrine()->getManager();
-        $shortcut = bin2hex(random_bytes(5));
+        $shortcut = bin2hex(random_bytes(7));
              
              $urlcontact = new Urlcontact(url);
              $urlcontact->setUrl($url);
