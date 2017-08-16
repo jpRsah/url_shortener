@@ -9,12 +9,6 @@ use Symfony\Component\HttpFoundation\Response;
 use AppBundle\Entity\Urlcontact;
 use AppBundle\Entity\Url;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
-
-//use FOS\RestBundle\Controller\Annotations\Get;
-//use FOS\RestBundle\Controller\Annotations as Rest;
-//use FOS\RestBundle\Controller\FOSRestController;
-//use FOS\RestBundle\View\View;
-
 use Symfony\Component\Validator\BrokenlinkValidator;
 
 class GetController extends Controller
@@ -22,16 +16,18 @@ class GetController extends Controller
   
   /**
    * 
-   * @Route("/get/{url}.{_format}",
+   * @Route("/get/api.{_format}",
    *     defaults={"_format": "html"})
    */
 
 
     
-    public function showAction(Request $request, $url)
+    public function showAction(Request $request)
     {
-        //$dfd = urlencode("https://www.rgs.ru/products/private_person/auto/osago/calc/index.wbp");
-        $url = urldecode($url);
+        
+        
+        $url = $request->query->get('url');
+        $url = rawurldecode($url);
 
         $ch = curl_init($url);
         curl_setopt($ch, CURLOPT_TIMEOUT, 10);

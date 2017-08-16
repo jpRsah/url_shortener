@@ -10,10 +10,10 @@ Description
 
 Symfony 3.3/PHP 7.0.18/mysql was used in the server side of this application.
 
-Is created form with two input fields at the main page:
+Form is created with two input fields at the main page:
 
-1. Field for your url 
-2. Field for shortcode (your or generated)
+1. Field for your url.
+2. Field for shortcode (your or generated).
 
 
 Verification of data in 3 layers:
@@ -25,11 +25,9 @@ Verification of data in 3 layers:
 ## To use API
 
 ```
-
-$shorturl=file_get_contents('http://DOMAIN/get/'.urlencode('URL'));
+$shorturl=file_get_contents('https://soul-fiber.ru/get/api?url='.rawurlencode('URL');
 
 ```
-DOMAIN - Http host of the url shortener.
 URL - your url for create short url.
 
 
@@ -57,6 +55,5 @@ original url.
 
 1. Application should have configuration file. logging system.
 2. Application should remove origin-short url pair from DB on the 15th day after its creation.
-	Можно использовать крон для запуска сервиса проверки базы, но допустим что у нас нет возможности вручную делать такие команды. следовательно проверять базу прийдется при каждом запуске приложения.
 3. Application should count amount of short url usage. Application should have API for short url creations
 4. GitHub repo should contain a descriptive commits history
