@@ -19,7 +19,7 @@ class LuckyController extends Controller
      * @Route("/", name="homepage")
      */
  public function newAction(Request $request)
-    {
+    {sadgfadfg
         
       $date = new \DateTime();
       $date->modify('-15 days');
